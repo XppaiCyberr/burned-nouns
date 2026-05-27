@@ -33,7 +33,6 @@ export default function Home() {
       <nav className="h-12 border-b border-[#E5E5E5] px-4 flex justify-between items-center bg-white flex-shrink-0">
         <Link href="/" className="font-bold tracking-tighter text-sm uppercase">Burned Nouns</Link>
         <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-[#999]">
-          <Link href="/" className="text-black transition-colors">Burned</Link>
           <Link href="/about" className="hover:text-black transition-colors">About</Link>
         </div>
       </nav>
@@ -139,7 +138,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="h-8 border-t border-[#E5E5E5] px-4 flex justify-between items-center bg-white text-[9px] text-[#999] uppercase tracking-widest flex-shrink-0">
-        <span>Historical Record v1.1</span>
+        <span>Historical Record v1.2</span>
         <span className="font-mono">© 2026 BURNEDNOUNS</span>
       </footer>
 
