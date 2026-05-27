@@ -15,16 +15,16 @@ export default function About() {
       </nav>
 
       {/* Main Content Area - Wide horizontal layout */}
-      <div className="flex-1 overflow-y-auto bg-[#F0F0F0] p-4 lg:p-12 flex justify-center items-start lg:items-center">
-        <div className="max-w-3xl w-full bg-white border border-[#E5E5E5] p-6 lg:p-10 my-4 lg:my-8 shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_20px_40px_-12px_rgba(0,0,0,0.1)]">
+      <div className="flex-1 overflow-y-auto bg-[#F0F0F0] p-4 lg:p-12 flex justify-center items-start">
+        <div className="max-w-2xl w-full bg-white border border-[#E5E5E5] p-6 lg:p-10 my-4 lg:my-8 shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_15px_30px_-10px_rgba(0,0,0,0.08)]">
           <header className="mb-6 border-b border-black pb-4">
-            <span className="block text-[8px] font-bold uppercase tracking-[0.3em] text-[#AAA] mb-2">Historical Archive</span>
-            <h1 className="text-2xl lg:text-4xl font-black tracking-tighter leading-[0.95] uppercase">
+            <span className="block text-[7px] font-bold uppercase tracking-[0.3em] text-[#AAA] mb-2">Historical Archive</span>
+            <h1 className="text-xl lg:text-3xl font-black tracking-tighter leading-[0.95] uppercase">
               The Burned<br />Nouns Era
             </h1>
           </header>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[10px] lg:text-xs leading-relaxed text-[#555] font-medium">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[9px] lg:text-[11px] leading-relaxed text-[#555] font-medium">
             <div className="space-y-6">
               <p>
                 The project focuses on the <strong className="text-black">“Burned Nouns”</strong> era in Nouns DAO history.
