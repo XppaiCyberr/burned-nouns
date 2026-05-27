@@ -15,80 +15,120 @@ export default function Context() {
       </nav>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto bg-[#F0F0F0] p-4 lg:p-12 flex justify-center items-start lg:items-center">
-        <div className="max-w-3xl w-full bg-white border border-[#E5E5E5] p-6 lg:p-10 my-4 lg:my-8 shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_20px_40px_-12px_rgba(0,0,0,0.1)]">
+      <div className="flex-1 overflow-y-auto bg-[#F0F0F0] p-4 lg:p-12 flex justify-center items-start">
+        <div className="max-w-5xl w-full bg-white border border-[#E5E5E5] p-8 lg:p-16 my-4 lg:my-8 shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_20px_-40px_-12px_rgba(0,0,0,0.1)]">
           
-          <header className="mb-8 border-b border-black pb-6">
-            <span className="block text-[8px] font-bold uppercase tracking-[0.3em] text-[#AAA] mb-2">Historical Context // Prop 955</span>
-            <h1 className="text-2xl lg:text-4xl font-black tracking-tighter leading-[0.95] uppercase">
+          <header className="mb-12 border-b border-black pb-8">
+            <div className="flex justify-between items-end mb-4">
+              <span className="block text-[8px] font-bold uppercase tracking-[0.3em] text-[#AAA]">Registry // Historical Records</span>
+              <span className="font-mono text-[9px] text-[#AAA]">DOC_955_958_961_969</span>
+            </div>
+            <h1 className="text-4xl lg:text-6xl font-black tracking-tighter leading-[0.85] uppercase">
               The Great<br />Floor Debate
             </h1>
           </header>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 text-[10px] lg:text-xs leading-relaxed text-[#555] font-medium">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             
-            {/* The Proposal */}
-            <div className="space-y-6">
+            {/* Left: The Catalyst (Prop 955) */}
+            <div className="lg:col-span-5 space-y-10">
               <section>
-                <span className="block text-[8px] font-bold uppercase tracking-widest text-black mb-2">The Proposal</span>
-                <p>
-                  Proposal 955, submitted by <strong className="text-black">makenounsgreatagain.eth</strong>, was a pivot point in the DAO's economic strategy. It sought to raise the auction reserve price from its nominal level to <strong className="text-black">2.8 ETH</strong>.
+                <span className="block text-[10px] font-bold uppercase tracking-widest text-black mb-4 border-b border-[#EEE] pb-1">The Catalyst // Prop 955</span>
+                <p className="text-sm lg:text-base leading-relaxed text-[#444] mb-4">
+                  Proposal 955 (April 25, 2026) raised the auction reserve to <strong className="text-black">2.8 ETH</strong>.
                 </p>
-              </section>
-
-              <section>
-                <span className="block text-[8px] font-bold uppercase tracking-widest text-black mb-2">The Rationale</span>
-                <p>
-                  The proposer argued that the DAO was facing a "voter dilution crisis." By allowing Nouns to be sold for nearly zero during market downturns, the "Book Value" of each Noun was being ignored, and the treasury's Net Asset Value (NAV) was being drained by participants with short-term incentives.
+                <p className="text-xs leading-relaxed text-[#666]">
+                  The goal was to protect the treasury's Net Asset Value (NAV) and prevent "cheap" Nouns from diluting existing holders during market lulls. This move effectively ended the "low-floor" era and triggered the first burns.
                 </p>
               </section>
 
               <div className="bg-[#F5F5F5] p-6 border-l-2 border-black">
-                <span className="block text-[7px] font-bold uppercase tracking-widest text-[#AAA] mb-2">Core Argument</span>
-                <p className="italic text-black">
-                  "We must protect the floor to ensure that every new member is a long-term steward who values the treasury as much as the art."
+                <span className="block text-[8px] font-bold uppercase tracking-widest text-[#AAA] mb-3">Core Rationale</span>
+                <p className="text-sm italic font-bold tracking-tight text-black leading-tight">
+                  "Protect the floor to ensure every new member is a long-term steward."
                 </p>
               </div>
             </div>
 
-            {/* The Debate */}
-            <div className="space-y-6">
+            {/* Right: The Resistance (Props 958, 961, 969) */}
+            <div className="lg:col-span-7 space-y-12">
               <section>
-                <span className="block text-[8px] font-bold uppercase tracking-widest text-black mb-2">Community Sentiment</span>
-                <div className="space-y-4">
-                  <div className="p-3 border border-[#EEE]">
-                    <span className="text-[7px] font-bold text-green-600 uppercase mb-1 block">In Favor // Value Preservation</span>
-                    <p>Supporters emphasized that a 2.8 ETH floor reflected the actual cash-value held by the treasury, preventing arbitrage and preserving the "prestige" of the collection.</p>
+                <span className="block text-[10px] font-bold uppercase tracking-widest text-black mb-6 border-b border-[#EEE] pb-1">The Resistance // The Push to Revert</span>
+                <p className="text-sm leading-relaxed text-[#444] mb-8">
+                  As the burns began, a faction of the community—led by <strong className="text-black">coolbeans1r.eth</strong>—mounted a persistent legislative counter-offensive to return the reserve price to <strong className="text-black">0 ETH</strong>.
+                </p>
+
+                <div className="space-y-8">
+                  {/* Prop 958 */}
+                  <div className="border border-[#E5E5E5] p-5 hover:border-black transition-colors">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-xs font-black uppercase tracking-widest">Proposal 958</h3>
+                      <span className="text-[9px] font-mono bg-gray-100 px-1.5 py-0.5 uppercase">Canceled</span>
+                    </div>
+                    <p className="text-[11px] text-[#666] mb-4 italic leading-snug">
+                      "Let the auction be a playground, not a boardroom. A reserve price is a crutch."
+                    </p>
+                    <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#AAA]">Date: 23 April 2026</div>
                   </div>
-                  <div className="p-3 border border-[#EEE]">
-                    <span className="text-[7px] font-bold text-red-600 uppercase mb-1 block">Against // Proliferation First</span>
-                    <p>Opponents viewed the move as "elitist," arguing that Nouns should remain accessible. They feared a "walled garden" would stifle the very diversity that made the DAO successful.</p>
+
+                  {/* Prop 961 */}
+                  <div className="border border-[#E5E5E5] p-5 hover:border-black transition-colors">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-xs font-black uppercase tracking-widest">Proposal 961</h3>
+                      <div className="flex gap-2">
+                        <span className="text-[9px] font-mono bg-red-50 text-red-600 px-1.5 py-0.5 uppercase">Defeated</span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 mb-4 text-center">
+                      <div className="bg-[#F9F9F9] py-1"><span className="block text-[8px] uppercase text-[#AAA]">For</span><span className="text-[10px] font-bold">90</span></div>
+                      <div className="bg-[#F9F9F9] py-1"><span className="block text-[8px] uppercase text-[#AAA]">Against</span><span className="text-[10px] font-bold">434</span></div>
+                      <div className="bg-[#F9F9F9] py-1"><span className="block text-[8px] uppercase text-[#AAA]">Quorum</span><span className="text-[10px] font-bold">203</span></div>
+                    </div>
+                    <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#AAA]">Date: 26 April 2026</div>
+                  </div>
+
+                  {/* Prop 969 */}
+                  <div className="border border-[#E5E5E5] p-5 hover:border-black transition-colors">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-xs font-black uppercase tracking-widest">Proposal 969</h3>
+                      <div className="flex gap-2">
+                        <span className="text-[9px] font-mono bg-red-50 text-red-600 px-1.5 py-0.5 uppercase">Defeated</span>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-[#444] mb-4 leading-relaxed">
+                      Argument: "The auction is the heartbeat. Zero sales means zero revenue and zero momentum. Turn the lights back on."
+                    </p>
+                    <div className="grid grid-cols-3 gap-2 mb-4 text-center">
+                      <div className="bg-[#F9F9F9] py-1"><span className="block text-[8px] uppercase text-[#AAA]">For</span><span className="text-[10px] font-bold">123</span></div>
+                      <div className="bg-[#F9F9F9] py-1"><span className="block text-[8px] uppercase text-[#AAA]">Against</span><span className="text-[10px] font-bold">281</span></div>
+                      <div className="bg-[#F9F9F9] py-1"><span className="block text-[8px] uppercase text-[#AAA]">Quorum</span><span className="text-[10px] font-bold">204</span></div>
+                    </div>
+                    <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#AAA]">Date: 16 May 2026</div>
                   </div>
                 </div>
               </section>
 
-              <section>
-                <span className="block text-[8px] font-bold uppercase tracking-widest text-black mb-2">The Outcome</span>
-                <p>
-                  Despite the heated debate, the proposal passed. Executed on <strong className="text-black">April 25, 2026</strong>, it immediately halted the "low-cost" era, leading to the first string of 0-bid auctions and the subsequent "Burned Nouns" chapter.
+              <footer className="pt-8 border-t border-[#E5E5E5]">
+                <p className="text-[11px] text-[#666] leading-relaxed">
+                  These failed attempts demonstrated a deep split in the DAO's identity: whether Nouns are primarily an <strong className="text-black">Economic Asset</strong> (to be protected) or a <strong className="text-black">Cultural Heartbeat</strong> (to be proliferated at any cost).
                 </p>
-              </section>
+              </footer>
             </div>
 
           </div>
 
-          <div className="mt-16 pt-8 border-t border-[#E5E5E5] flex justify-between items-center">
+          <div className="mt-16 pt-10 border-t border-[#E5E5E5] flex justify-between items-center">
             <Link href="/" className="text-[10px] font-bold uppercase tracking-[0.2em] border-b border-black pb-1 hover:opacity-50 transition-opacity">
               Back to Archive
             </Link>
-            <span className="font-mono text-[9px] text-[#AAA]">SOURCE_NOUNS_CAMP_955</span>
+            <span className="font-mono text-[9px] text-[#AAA]">SOURCES: PROP_958_961_969</span>
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <footer className="h-8 border-t border-[#E5E5E5] px-4 flex justify-between items-center bg-white text-[9px] text-[#999] uppercase tracking-widest flex-shrink-0">
-        <span>Economic Registry v1.2</span>
+        <span>Legislative History v1.2</span>
         <span className="font-mono">© 2026</span>
       </footer>
     </main>
