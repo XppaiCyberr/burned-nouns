@@ -53,6 +53,21 @@ export default function About() {
               <p>
                 After Noun 1913, all no-bid Nouns were preserved in the treasury instead of being destroyed. The project aims to document, preserve, and celebrate this rare chapter in Nouns history.
               </p>
+
+              <div className="pt-10 border-t border-[#EEE]">
+                <span className="block text-[8px] font-bold uppercase tracking-widest text-black mb-4">Creator's Note // xppaicyber</span>
+                <div className="bg-black text-white p-6 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-100 transition-opacity">
+                    <span className="font-mono text-[20px]">☢</span>
+                  </div>
+                  <p className="text-xs lg:text-sm font-bold leading-relaxed italic mb-4">
+                    "With this project, I am trying something entirely new compared to everything I've done before. I'm venturing into territory that some might consider dangerous, sensitive, or even taboo."
+                  </p>
+                  <p className="text-[10px] uppercase tracking-widest leading-relaxed opacity-80">
+                    My hope is that this archive attracts attention—be it in a good way, or even a bad way. It needs to be seen.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
