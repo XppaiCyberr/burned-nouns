@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { fetchNounMetadata } from '@/lib/nouns';
 
 export default function Home() {
@@ -30,10 +31,11 @@ export default function Home() {
     <main className="h-screen w-screen overflow-hidden bg-[#F5F5F5] text-[#1A1A1A] flex flex-col font-sans antialiased selection:bg-[#E2FF33]">
       {/* Top Bar */}
       <nav className="h-12 border-b border-[#E5E5E5] px-4 flex justify-between items-center bg-white flex-shrink-0">
-        <span className="font-bold tracking-tighter text-sm uppercase">Burned Nouns</span>
+        <Link href="/" className="font-bold tracking-tighter text-sm uppercase">Burned Nouns</Link>
         <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-[#999]">
-          <a href="#" className="hover:text-black transition-colors">Explorer</a>
+          <Link href="/" className="text-black transition-colors">Explorer</Link>
           <a href="#" className="hover:text-black transition-colors">Burned</a>
+          <Link href="/about" className="hover:text-black transition-colors">About</Link>
         </div>
       </nav>
 
