@@ -113,8 +113,13 @@ export default function Home() {
           {/* Detailed View */}
           {metadata && (
             <div className="w-full h-full max-w-4xl flex flex-col lg:flex-row gap-8 items-center justify-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="w-full max-w-[400px] aspect-square bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_30px_60px_-12px_rgba(0,0,0,0.12)] border border-white flex-shrink-0">
-                <img src={metadata.image} alt={metadata.name} className="w-full h-full object-contain p-2" />
+              <div className="w-full max-w-[400px] aspect-square bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_30px_60px_-12px_rgba(0,0,0,0.12)] border border-white flex-shrink-0 relative overflow-hidden">
+                <img 
+                  src={metadata.image} 
+                  alt={metadata.name} 
+                  className="w-full h-full object-contain p-2 filter grayscale-[0.9] contrast-[1.1] brightness-[0.8]" 
+                />
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
               </div>
               <div className="w-full lg:max-w-sm">
                 <div className="mb-6">
@@ -157,7 +162,12 @@ export default function Home() {
                         onClick={() => handleFetch(noun.tokenId)}
                         className="group relative aspect-square bg-white border border-[#E5E5E5] hover:border-black transition-all hover:scale-[1.02] hover:z-10 shadow-sm hover:shadow-xl overflow-hidden"
                       >
-                        <img src={noun.image} alt={noun.name} className="w-full h-full object-contain p-1" />
+                        <img 
+                          src={noun.image} 
+                          alt={noun.name} 
+                          className="w-full h-full object-contain p-1 filter grayscale-[0.95] contrast-[1.05] brightness-[0.85] group-hover:grayscale-0 transition-all duration-500" 
+                        />
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-end p-1">
                           <span className="text-[8px] font-mono font-bold bg-white px-1 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
                             #{noun.tokenId}
