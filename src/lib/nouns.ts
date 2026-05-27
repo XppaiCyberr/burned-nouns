@@ -27,7 +27,9 @@ export async function fetchNounMetadata(tokenId: string) {
       image = metadata.image;
     } catch (e) {
       // Reconstruct image if tokenURI fails (common for burned tokens)
-      const svgBase64 = await descriptorContract.generateSVGImage(seeds);
+      // Convert Ethers Result object to a standard array/object to avoid read-only errors
+      const seedsArray = Array.from(seeds);
+      const svgBase64 = await descriptorContract.generateSVGImage(seedsArray);
       image = `data:image/svg+xml;base64,${svgBase64}`;
     }
 
