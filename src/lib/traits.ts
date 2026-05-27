@@ -31,7 +31,7 @@ export const ACCESSORIES = [
   'txt-io', 'txt-lmao', 'txt-lol', 'txt-mint', 'txt-nil-grey-dark', 'txt-noun-f0f', 'txt-noun-green',
   'txt-noun-multicolor', 'txt-noun', 'txt-pi', 'txt-pop', 'txt-rofl', 'txt-we', 'txt-yay', 'wall',
   'wave', 'wet-money', 'woolweave-bicolor', 'woolweave-dirt', 'yingyang', 'grease', 'tatewaku',
-  'uroko', 'broken-heart', 'sweater', 'gnars'
+  'uroko', 'broken-heart', 'sweater', 'gnars', 'pills', 'star-sparkles', 'sun-glasses', 'ufo'
 ];
 
 export const HEADS = [
