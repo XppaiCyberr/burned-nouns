@@ -9,6 +9,7 @@ export default function About() {
       <nav className="h-12 border-b border-[#E5E5E5] px-4 flex justify-between items-center bg-white flex-shrink-0">
         <Link href="/" className="font-bold tracking-tighter text-sm uppercase">Burned Nouns</Link>
         <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-[#999]">
+          <Link href="/context" className="hover:text-black transition-colors">Context</Link>
           <Link href="/about" className="text-black transition-colors">About</Link>
         </div>
       </nav>
