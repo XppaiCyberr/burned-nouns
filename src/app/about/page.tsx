@@ -34,9 +34,8 @@ export default function About() {
               </p>
 
               <p>
-                This created a unique and short-lived period where multiple Nouns ceased to exist immediately after minting due to failed auctions.
-              </p>
-            </div>
+                This created a unique and short-lived period where multiple Nouns ceased to exist immediately after minting due to receiving no bids.
+              </p>            </div>
 
             <div className="space-y-6">
               <p>

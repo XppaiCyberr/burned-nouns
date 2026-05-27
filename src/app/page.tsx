@@ -67,7 +67,7 @@ export default function Home() {
                 Burned<br />Nouns
               </h1>
               <p className="text-[11px] text-[#666] leading-relaxed">
-                Documenting the unique era between <strong className="text-black">Proposal 955</strong> and <strong className="text-black">968</strong>, where failed auctions led to the permanent destruction of Nouns.
+                Documenting the unique era between <strong className="text-black">Proposal 955</strong> and <strong className="text-black">968</strong>, where no-bid auctions led to the permanent destruction of Nouns.
               </p>
             </header>
             
