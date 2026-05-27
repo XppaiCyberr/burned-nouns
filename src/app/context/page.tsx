@@ -37,9 +37,18 @@ export default function Context() {
                 <p className="text-sm lg:text-base leading-relaxed text-[#444] mb-4">
                   Proposal 955 (April 25, 2026) raised the auction reserve to <strong className="text-black">2.8 ETH</strong>.
                 </p>
-                <p className="text-xs leading-relaxed text-[#666]">
+                <p className="text-xs leading-relaxed text-[#666] mb-4">
                   The goal was to protect the treasury's Net Asset Value (NAV) and prevent "cheap" Nouns from diluting existing holders during market lulls. This move effectively ended the "low-floor" era and triggered the first burns.
                 </p>
+                <div className="bg-black text-white p-4 mb-4">
+                  <span className="block text-[8px] font-bold uppercase tracking-[0.3em] mb-2 opacity-60">Critical Participation</span>
+                  <p className="text-[10px] leading-relaxed">
+                    <strong className="text-[#E2FF33]">vote.nounders.eth</strong>—the address controlled by the Nounders / founding contributors—participated in this vote, casting an <strong className="text-[#E2FF33]">AGAINST</strong> vote on Prop 955.
+                  </p>
+                  <p className="text-[9px] mt-2 opacity-80 italic">
+                    This marked their first participation since <strong className="text-white">Proposal 732</strong> (Nouns DUNA Reserve Admin 2025), where they also voted against.
+                  </p>
+                </div>
               </section>
 
               <div className="bg-[#F5F5F5] p-6 border-l-2 border-black">
