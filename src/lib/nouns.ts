@@ -36,7 +36,7 @@ export async function fetchNounMetadata(tokenId: string) {
     const attributes = [
       { trait_type: 'Background', value: BACKGROUNDS[Number(seeds.background)] || 'Unknown' },
       { trait_type: 'Body', value: BODIES[Number(seeds.body)] || 'Unknown' },
-      { trait_type: 'Accessory', value: tokenId === '1888' ? 'sweater' : (ACCESSORIES[Number(seeds.accessory)] || 'Unknown') },
+      { trait_type: 'Accessory', value: tokenId === '1888' ? 'sweater' : tokenId === '1895' ? 'tatewaku' : (ACCESSORIES[Number(seeds.accessory)] || 'Unknown') },
       { trait_type: 'Head', value: HEADS[Number(seeds.head)] || 'Unknown' },
       { trait_type: 'Glasses', value: GLASSES[Number(seeds.glasses)] || 'Unknown' }
     ];
