@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { fetchNounMetadata, fetchBurnedNounsRange } from '@/lib/nouns';
 
 export default function Home() {
-  const [nounId, setNounId] = useState('');
   const [metadata, setMetadata] = useState<any>(null);
   const [burnedNouns, setBurnedNouns] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
@@ -26,9 +25,7 @@ export default function Home() {
     loadArchive();
   }, []);
 
-  const handleFetch = async (e: React.FormEvent | string) => {
-    if (typeof e !== 'string') e.preventDefault();
-    const id = typeof e === 'string' ? e : nounId;
+  const handleFetch = async (id: string) => {
     if (!id) return;
 
     setLoading(true);
@@ -72,30 +69,6 @@ export default function Home() {
             </header>
             
             <div className="space-y-8">
-              <form onSubmit={handleFetch}>
-                <label className="block text-[9px] font-bold uppercase tracking-[0.2em] mb-2 text-[#999]">
-                  Lookup Record
-                </label>
-                <div className="flex border-b border-black">
-                  <input
-                    type="text"
-                    pattern="[0-9]*"
-                    value={nounId}
-                    onChange={(e) => setNounId(e.target.value.replace(/\D/g, ''))}
-                    placeholder="000"
-                    className="flex-1 bg-transparent py-2 text-2xl font-mono outline-none placeholder:opacity-10"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="px-4 py-2 font-bold uppercase text-[10px] tracking-widest hover:opacity-50 transition-opacity"
-                  >
-                    {loading ? '...' : 'Fetch'}
-                  </button>
-                </div>
-              </form>
-
               <div className="pt-8 border-t border-[#F0F0F0]">
                 <span className="block text-[8px] font-bold uppercase tracking-[0.3em] text-[#AAA] mb-3">Era Scope</span>
                 <p className="text-[10px] text-[#888] leading-relaxed mb-4">
