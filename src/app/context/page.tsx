@@ -117,7 +117,37 @@ export default function Context() {
                 </div>
               </section>
 
-              <footer className="pt-8 border-t border-[#E5E5E5]">
+              <footer className="pt-8 border-t border-[#E5E5E5] space-y-8">
+                <div>
+                  <span className="block text-[8px] font-bold uppercase tracking-widest text-black mb-4">Cultural Impact // Sentiment</span>
+                  <div className="space-y-6">
+                    <div className="border border-black p-4 bg-[#F5F5F5]">
+                      <p className="text-[10px] font-bold mb-2">4156 (@punk4156):</p>
+                      <p className="text-xs italic mb-4 leading-relaxed">
+                        "RIP One Noun, Every Day, Forever. Lasted 1,718 days... Hopefully someone out there gets inspired to build a V2 that improves on the shortcomings."
+                      </p>
+                      <img 
+                        src="/4156x.png" 
+                        alt="4156 Post" 
+                        className="w-full border border-[#DDD] shadow-sm"
+                      />
+                    </div>
+                    
+                    <div className="p-4 border border-[#EEE]">
+                      <p className="text-[10px] leading-relaxed text-[#666]">
+                        Observers like <strong className="text-black italic">William M. Peaster</strong> documented the era's end, noting the profound shift in the protocol's fundamental promise of eternal daily auctions.
+                      </p>
+                      <a 
+                        href="https://x.com/wmpeaster/status/2047488088470179899" 
+                        target="_blank" 
+                        className="text-[9px] font-bold uppercase border-b border-black mt-2 inline-block hover:opacity-50"
+                      >
+                        View External Commentary ↗
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
                 <p className="text-[11px] text-[#666] leading-relaxed">
                   These failed attempts demonstrated a deep split in the DAO's identity: whether Nouns are primarily an <strong className="text-black">Economic Asset</strong> (to be protected) or a <strong className="text-black">Cultural Heartbeat</strong> (to be proliferated at any cost).
                 </p>
