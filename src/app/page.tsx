@@ -58,53 +58,69 @@ export default function Home() {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col lg:flex-row min-h-0 overflow-hidden">
         
-        {/* Left Section: Registry Control */}
-        <section className="w-full lg:w-[350px] border-b lg:border-b-0 lg:border-r border-[#E5E5E5] bg-white p-6 flex flex-col justify-center flex-shrink-0">
+        {/* Left Section: Project Context & Registry */}
+        <section className="w-full lg:w-[350px] border-b lg:border-b-0 lg:border-r border-[#E5E5E5] bg-white p-6 lg:p-10 flex flex-col justify-center flex-shrink-0">
           <div className="max-w-xs mx-auto lg:mx-0">
-            <h1 className="text-4xl font-black tracking-tighter leading-none mb-4 uppercase">
-              Registry
-            </h1>
+            <header className="mb-8">
+              <span className="block text-[8px] font-bold uppercase tracking-[0.3em] text-[#AAA] mb-2">The Archive</span>
+              <h1 className="text-3xl font-black tracking-tighter leading-none mb-4 uppercase">
+                Burned<br />Nouns
+              </h1>
+              <p className="text-[11px] text-[#666] leading-relaxed">
+                Documenting the unique era between <strong className="text-black">Proposal 955</strong> and <strong className="text-black">968</strong>, where failed auctions led to the permanent destruction of Nouns.
+              </p>
+            </header>
             
-            <form onSubmit={handleFetch} className="mb-6">
-              <label className="block text-[9px] font-bold uppercase tracking-[0.2em] mb-2 text-[#999]">
-                Noun ID
-              </label>
-              <div className="flex border-b border-black">
-                <input
-                  type="text"
-                  pattern="[0-9]*"
-                  value={nounId}
-                  onChange={(e) => setNounId(e.target.value.replace(/\D/g, ''))}
-                  placeholder="000"
-                  className="flex-1 bg-transparent py-2 text-3xl font-mono outline-none placeholder:opacity-10"
-                  required
-                />
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="px-4 py-2 font-bold uppercase text-[10px] tracking-widest hover:opacity-50 transition-opacity"
-                >
-                  {loading ? '...' : 'Fetch'}
-                </button>
-              </div>
-            </form>
+            <div className="space-y-8">
+              <form onSubmit={handleFetch}>
+                <label className="block text-[9px] font-bold uppercase tracking-[0.2em] mb-2 text-[#999]">
+                  Lookup Record
+                </label>
+                <div className="flex border-b border-black">
+                  <input
+                    type="text"
+                    pattern="[0-9]*"
+                    value={nounId}
+                    onChange={(e) => setNounId(e.target.value.replace(/\D/g, ''))}
+                    placeholder="000"
+                    className="flex-1 bg-transparent py-2 text-2xl font-mono outline-none placeholder:opacity-10"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="px-4 py-2 font-bold uppercase text-[10px] tracking-widest hover:opacity-50 transition-opacity"
+                  >
+                    {loading ? '...' : 'Fetch'}
+                  </button>
+                </div>
+              </form>
 
-            <p className="text-xs text-[#666] leading-relaxed mb-4">
-              Explore the "Burned Nouns" era (IDs 1888–1913). Records resolved in real-time from the Ethereum mainnet.
-            </p>
+              <div className="pt-8 border-t border-[#F0F0F0]">
+                <span className="block text-[8px] font-bold uppercase tracking-[0.3em] text-[#AAA] mb-3">Era Scope</span>
+                <p className="text-[10px] text-[#888] leading-relaxed mb-4">
+                  This archive focuses specifically on <strong className="text-black">Noun IDs 1888—1913</strong>, reconstructed directly from on-chain seeds.
+                </p>
+                <Link href="/about" className="text-[9px] font-bold uppercase tracking-widest border-b border-black pb-0.5 hover:opacity-50 transition-opacity">
+                  Read Full History →
+                </Link>
+              </div>
+            </div>
 
             {error && (
-              <span className="text-[10px] font-mono text-red-500 uppercase tracking-tighter bg-red-50 px-2 py-1">
-                {error}
-              </span>
+              <div className="mt-6">
+                <span className="text-[10px] font-mono text-red-500 uppercase tracking-tighter bg-red-50 px-2 py-1">
+                  {error}
+                </span>
+              </div>
             )}
 
             {metadata && (
               <button 
                 onClick={() => setMetadata(null)}
-                className="mt-8 text-[10px] font-bold uppercase tracking-widest border-b border-black pb-1 hover:opacity-50 transition-opacity"
+                className="mt-12 text-[10px] font-bold uppercase tracking-widest border-b border-black pb-1 hover:opacity-50 transition-opacity"
               >
-                ← Back to Archive
+                ← Back to Grid
               </button>
             )}
           </div>
