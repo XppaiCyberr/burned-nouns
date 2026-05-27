@@ -1,23 +1,41 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { fetchNounMetadata } from '@/lib/nouns';
+import { fetchNounMetadata, fetchBurnedNounsRange } from '@/lib/nouns';
 
 export default function Home() {
   const [nounId, setNounId] = useState('');
   const [metadata, setMetadata] = useState<any>(null);
+  const [burnedNouns, setBurnedNouns] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+  const [gridLoading, setGridLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const handleFetch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!nounId) return;
+  useEffect(() => {
+    async function loadArchive() {
+      try {
+        const data = await fetchBurnedNounsRange(1888, 1913);
+        setBurnedNouns(data);
+      } catch (err) {
+        console.error('Failed to load burned nouns archive:', err);
+      } finally {
+        setGridLoading(false);
+      }
+    }
+    loadArchive();
+  }, []);
+
+  const handleFetch = async (e: React.FormEvent | string) => {
+    if (typeof e !== 'string') e.preventDefault();
+    const id = typeof e === 'string' ? e : nounId;
+    if (!id) return;
+
     setLoading(true);
     setError('');
     setMetadata(null);
     try {
-      const data = await fetchNounMetadata(nounId);
+      const data = await fetchNounMetadata(id);
       setMetadata(data);
     } catch (err) {
       setError('Not found.');
@@ -80,63 +98,91 @@ export default function Home() {
                 {error}
               </span>
             )}
+
+            {metadata && (
+              <button 
+                onClick={() => setMetadata(null)}
+                className="mt-8 text-[10px] font-bold uppercase tracking-widest border-b border-black pb-1 hover:opacity-50 transition-opacity"
+              >
+                ← Back to Archive
+              </button>
+            )}
           </div>
         </section>
 
         {/* Right Section: Visual Archive */}
-        <section className="flex-1 bg-[#F0F0F0] relative overflow-hidden flex items-center justify-center p-4 lg:p-8">
-          {!metadata && !loading && (
-            <div className="text-[#999] font-mono text-[10px] uppercase tracking-[0.3em] animate-pulse">
-              Awaiting Identification
-            </div>
-          )}
-
+        <section className="flex-1 bg-[#F0F0F0] relative overflow-y-auto lg:overflow-hidden flex items-center justify-center p-4 lg:p-8">
+          
           {loading && (
-            <div className="flex flex-col items-center">
+            <div className="absolute inset-0 bg-[#F0F0F0]/80 z-20 flex flex-col items-center justify-center">
               <div className="w-8 h-[1px] bg-black mb-2 animate-bounce"></div>
-              <span className="font-mono text-[9px] tracking-widest uppercase">Searching Archive</span>
+              <span className="font-mono text-[9px] tracking-widest uppercase text-black">Resolving ID</span>
             </div>
           )}
 
-          {metadata && !loading && (
+          {/* Detailed View */}
+          {metadata && (
             <div className="w-full h-full max-w-4xl flex flex-col lg:flex-row gap-8 items-center justify-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-              
-              {/* Image Container */}
               <div className="w-full max-w-[400px] aspect-square bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_30px_60px_-12px_rgba(0,0,0,0.12)] border border-white flex-shrink-0">
-                <img
-                  src={metadata.image}
-                  alt={metadata.name}
-                  className="w-full h-full object-contain p-2"
-                />
+                <img src={metadata.image} alt={metadata.name} className="w-full h-full object-contain p-2" />
               </div>
-
-              {/* Metadata Container */}
               <div className="w-full lg:max-w-sm">
                 <div className="mb-6">
                   <h2 className="text-2xl font-black uppercase tracking-tight mb-1">{metadata.name}</h2>
-                  <p className="text-[11px] text-[#666] leading-relaxed line-clamp-4">{metadata.description}</p>
+                  <p className="text-[11px] text-[#666] leading-relaxed">{metadata.description}</p>
                 </div>
-
                 <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#E5E5E5]">
                   {metadata.attributes?.map((attr: any, i: number) => (
                     <div key={i}>
-                      <span className="block text-[8px] font-bold uppercase tracking-widest text-[#AAA] mb-0.5">
-                        {attr.trait_type}
-                      </span>
-                      <span className="text-xs font-bold uppercase tracking-tight">
-                        {attr.value.replace(/-/g, ' ')}
-                      </span>
+                      <span className="block text-[8px] font-bold uppercase tracking-widest text-[#AAA] mb-0.5">{attr.trait_type}</span>
+                      <span className="text-xs font-bold uppercase tracking-tight">{attr.value.replace(/-/g, ' ')}</span>
                     </div>
                   ))}
                 </div>
               </div>
+            </div>
+          )}
 
+          {/* Grid View */}
+          {!metadata && (
+            <div className="w-full h-full flex flex-col">
+              <header className="mb-6 flex justify-between items-end flex-shrink-0">
+                <div className="space-y-1">
+                  <span className="block text-[10px] font-bold uppercase tracking-[0.3em] text-[#AAA]">The Era Archive</span>
+                  <h2 className="text-2xl font-black uppercase tracking-tighter">1888 — 1913</h2>
+                </div>
+                {gridLoading && <span className="text-[10px] font-mono animate-pulse uppercase">Syncing...</span>}
+              </header>
+              
+              <div className="flex-1 overflow-y-auto min-h-0 pr-2 custom-scrollbar">
+                <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3">
+                  {gridLoading ? (
+                    Array.from({ length: 26 }).map((_, i) => (
+                      <div key={i} className="aspect-square bg-white/40 animate-pulse border border-[#E5E5E5]"></div>
+                    ))
+                  ) : (
+                    burnedNouns.map((noun) => (
+                      <button
+                        key={noun.tokenId}
+                        onClick={() => handleFetch(noun.tokenId)}
+                        className="group relative aspect-square bg-white border border-[#E5E5E5] hover:border-black transition-all hover:scale-[1.02] hover:z-10 shadow-sm hover:shadow-xl overflow-hidden"
+                      >
+                        <img src={noun.image} alt={noun.name} className="w-full h-full object-contain p-1" />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-end p-1">
+                          <span className="text-[8px] font-mono font-bold bg-white px-1 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                            #{noun.tokenId}
+                          </span>
+                        </div>
+                      </button>
+                    ))
+                  )}
+                </div>
+              </div>
             </div>
           )}
         </section>
       </div>
 
-      {/* Footer */}
       <footer className="h-8 border-t border-[#E5E5E5] px-4 flex justify-between items-center bg-white text-[9px] text-[#999] uppercase tracking-widest flex-shrink-0">
         <span>Historical Record v1.2</span>
         <span className="font-mono">© 2026 BURNEDNOUNS</span>
@@ -144,6 +190,10 @@ export default function Home() {
 
       <style jsx global>{`
         body { margin: 0; padding: 0; overflow: hidden; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E5E5E5; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #999; }
       `}</style>
     </main>
   );
