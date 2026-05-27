@@ -172,11 +172,11 @@ export default function Home() {
           )}
         </section>
       </div>
-
-      <footer className="h-8 border-t border-[#E5E5E5] px-4 flex justify-between items-center bg-white text-[9px] text-[#999] uppercase tracking-widest flex-shrink-0">
-        <span>Historical Record v1.2</span>
-        <span className="font-mono">© 2026 BURNEDNOUNS</span>
-      </footer>
+{/* Footer */}
+<footer className="h-8 border-t border-[#E5E5E5] px-4 flex justify-between items-center bg-white text-[9px] text-[#999] uppercase tracking-widest flex-shrink-0">
+  <a href="https://etherscan.io/address/0xE11018C82D4405bDBc7414eC988Fd08351666666" target="_blank" className="hover:text-black transition-colors">xppaicyber.eth</a>
+  <span className="font-mono">© 2026 BURNEDNOUNS</span>
+</footer>
 
       <style jsx global>{`
         body { margin: 0; padding: 0; overflow: hidden; }
